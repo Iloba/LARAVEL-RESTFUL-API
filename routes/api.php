@@ -43,3 +43,6 @@ Route::delete('posts/{id}/delete', [PostController::class, 'destroy']);
 
 //Add comment to blog post
 Route::post('posts/{post:id}/comment', [CommentController::class, 'addComment']);
+
+//Get Comment on a post
+Route::get('posts/{post:id}/comment', [CommentController::class, 'getComments']);
