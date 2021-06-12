@@ -36,3 +36,6 @@ Route::post('posts/create', [PostController::class, 'create']);
 
 //Update Post
 Route::put('posts/{id}/update', [PostController::class, 'update']);
+
+//Delete Post
+Route::delete('posts/{id}/delete', [PostController::class, 'destroy']);

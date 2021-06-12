@@ -51,6 +51,7 @@ class PostController extends Controller
 
     //Update Post
     public function update(Request $request, $id){
+        //check if posts exists
         if(Post::where('id', $id)->exists()){
             $post = Post::find($id);
             $post->post_title = is_null($request->post_title) ? $post->post_title : $request->post_title;
@@ -64,7 +65,7 @@ class PostController extends Controller
             ], 200);
         }else{
             return response()->json([
-                "message" => "No SUch Post Found"
+                "message" => "No Such Post Found"
             ], 404);
         }
 
@@ -74,6 +75,20 @@ class PostController extends Controller
 
     //Delete Post
     public function destroy($id){
+        //Check if posts exists
+        if(Post::where('id', $id)->exists()){
+            $post = Post::find($id);
 
+            $post->delete();
+
+            //return response
+            return response()->json([
+                "message" => "Record Successfully Deleted"
+            ], 202);
+        }else{
+            return response()->json([
+                "message" => 'No such record Found'
+            ], 404);
+        }
     }
 }
