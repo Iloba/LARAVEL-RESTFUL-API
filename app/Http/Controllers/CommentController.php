@@ -24,9 +24,8 @@ class CommentController extends Controller
     //Get all Blog posts
     public function getComments(Post $post, Comment $comment){
         if(Post::where('id', $post->id)->exists()){
-            $comments = Comment::where('post_id', $comment->post_id)->get()->toJson(JSON_PRETTY_PRINT);
-                
-                return response($comments, 200);
+            $comments = Comment::where('post_id', $post->id)->get()->toJson(JSON_PRETTY_PRINT);
+            return response($comments, 200);
             
        }else{
            return response()->json([
