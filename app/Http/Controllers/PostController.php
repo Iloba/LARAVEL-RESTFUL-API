@@ -16,7 +16,7 @@ class PostController extends Controller
 
     //Get all posts with pagination
     public function paginatePosts(){
-        $posts = Post::Latest()->paginate(5);
+        $posts = Post::paginate(5);
         return response($posts, 200);
     }
 

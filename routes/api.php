@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,6 @@ Route::put('posts/{id}/update', [PostController::class, 'update']);
 
 //Delete Post
 Route::delete('posts/{id}/delete', [PostController::class, 'destroy']);
+
+//Add comment to blog post
+Route::post('posts/{post:id}/comment', [CommentController::class, 'addComment']);
