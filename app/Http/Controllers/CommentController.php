@@ -21,11 +21,18 @@ class CommentController extends Controller
         ], 200);
     }
 
-    //Get all Blog posts
+    //Get all Comments on a Blog posts
     public function getComments(Post $post, Comment $comment){
         if(Post::where('id', $post->id)->exists()){
             $comments = Comment::where('post_id', $post->id)->get()->toJson(JSON_PRETTY_PRINT);
-            return response($comments, 200);
+            if($comments){
+                return response($comments, 200);
+                
+            }else{
+                return response()->json([
+                    "message" => "No Comments on this Empty"
+               ], 404);
+            }
             
        }else{
            return response()->json([
@@ -33,4 +40,19 @@ class CommentController extends Controller
            ], 404);
        }
     }
+
+
+    //Edit Comments on a Blog Post
+    public function editComment(Post $post){
+
+    }
+
+
+
+
+    //Delete Comments on a Blog Post
+    public function deleteComment(Post $post){
+
+    }
+
 }

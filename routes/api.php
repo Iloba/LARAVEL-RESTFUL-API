@@ -46,3 +46,9 @@ Route::post('posts/{post:id}/comment', [CommentController::class, 'addComment'])
 
 //Get Comment on a post
 Route::get('posts/{post:id}/comment', [CommentController::class, 'getComments']);
+
+//Edit Comment
+Route::put('posts/{post:id}/comment/update', [CommentController::class, 'editComment']);
+
+//Delete Comment
+Route::delete('posts/{post:id}/comment/delete', [CommentController::class, 'deleteComment']);
