@@ -31,7 +31,7 @@ class CommentController extends Controller
             }else{
                 return response()->json([
                     "message" => "No Comments on this Empty"
-               ], 404);
+               ], 200);
             }
             
        }else{
@@ -43,8 +43,23 @@ class CommentController extends Controller
 
 
     //Edit Comments on a Blog Post
-    public function editComment(Post $post){
+    public function editComment(Request $request, Post $post){
+        if(Post::where('id', $post->id)->exists()){
+            $comment = Comment::find($post->id);
+            $comment->commentor_name = is_null($request->commentor_name) ? $comment->commentor_name : $request->commentor_name;
+            $comment->comment = is_null($request->comment) ? $comment->comment : $request->comment;
 
+            $comment->save();
+
+            //Return Response
+            return response()->json([
+                "message" => "comment successfully Updated"
+            ], 200);
+        }else{
+            return response()->json([
+                "message" => "comment Does not exist"
+            ], 404);
+        }
     }
 
 

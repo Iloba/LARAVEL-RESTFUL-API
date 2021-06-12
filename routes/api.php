@@ -42,13 +42,13 @@ Route::put('posts/{id}/update', [PostController::class, 'update']);
 Route::delete('posts/{id}/delete', [PostController::class, 'destroy']);
 
 //Add comment to blog post
-Route::post('posts/{post:id}/comment', [CommentController::class, 'addComment']);
+Route::post('posts/{post:id}/comment/create', [CommentController::class, 'addComment']);
 
 //Get Comment on a post
 Route::get('posts/{post:id}/comment', [CommentController::class, 'getComments']);
 
 //Edit Comment
-Route::put('posts/{post:id}/comment/update', [CommentController::class, 'editComment']);
+Route::put('posts/{post:id}/comment/{id}/update', [CommentController::class, 'editComment']);
 
 //Delete Comment
 Route::delete('posts/{post:id}/comment/delete', [CommentController::class, 'deleteComment']);
