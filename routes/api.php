@@ -21,4 +21,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 //Register routes
+
+//Get all posts
 Route::get('posts', [PostController::class, 'getPosts']);
+
+//Get all posts with Pagination
+Route::get('posts/paginate', [PostController::class, 'paginatePosts']);
+
+//Get Post By ID
+Route::get('posts/{id}', [PostController::class, 'show']);
+
+//Create Post
+Route::post('posts/create', [PostController::class, 'create']);
+
+//Update Post
+Route::put('posts/{id}/update', [PostController::class, 'update']);
