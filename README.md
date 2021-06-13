@@ -30,5 +30,13 @@
     php artisan serve
     
     Then Go ahead to test API using post man
+    
+    API was built with Laravel v8.42.1 (PHP v7.4.11)
+    
+    <h2>Pay close attention to:<h2/>
+        1. The use of mysql database
+        2. The use of MVC architectural pattern
+     
+        
 
 
