@@ -1,4 +1,4 @@
-<h1>Setting Up the APP<h1/>
+<h1>Setting Up the APP || Also find excel file in root folder for documentation<h1/>
   Clone the Repo
     open in vscode
     Create an Empty Database with any name (MYSQL DATABASE ON XAMPP PHP MYADMIN)
