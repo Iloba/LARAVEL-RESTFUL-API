@@ -10,15 +10,22 @@ class CommentController extends Controller
 {
     //Add comment to Blog post
     public function addComment(Request $request, Post $post){
-        $post->comment()->create([
-            'commentor_name' => $request->commentor_name,
-            'comment' => $request->comment
-        ]);
+        if(Post::where('id', $post->id)){
+            $post->comment()->create([
+                'commentor_name' => $request->commentor_name,
+                'comment' => $request->comment
+            ]);
+            //Return response
+            return response()->json([
+                "message" => "Comment Added to Post"
+            ], 200);
+        }else{
+            return response()->json([
+                "message" => "No Such Post Found"
+            ], 404);
+        }
 
-        //Return response
-        return response()->json([
-            "message" => "Comment Added to Post"
-        ], 200);
+        
     }
 
     //Get all Comments on a Blog posts
