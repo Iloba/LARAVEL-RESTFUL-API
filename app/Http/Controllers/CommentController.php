@@ -43,13 +43,13 @@ class CommentController extends Controller
 
 
     //Edit Comments on a Blog Post
-    public function editComment(Request $request, Post $post){
+    public function editComment(Request $request, Post $post, $id){
         if(Post::where('id', $post->id)->exists()){
-            // $comment = Comment::find($post->id);
-            $comment->commentor_name = is_null($request->commentor_name) ? $comment->commentor_name : $request->commentor_name;
-            $comment->comment = is_null($request->comment) ? $comment->comment : $request->comment;
-
-            $comment->save();
+              //Find the particular comment
+           $comments = Post::find($post->id)->comment()->where('id', $id)->first();
+           $comments->commentor_name = is_null($request->commentor_name) ? $comments->commentor_name : $request->commentor_name;
+           $comments->comment = is_null($request->comment) ? $comments->comment : $request->comment;
+           $comments->save();
 
             //Return Response
             return response()->json([
@@ -57,7 +57,7 @@ class CommentController extends Controller
             ], 200);
         }else{
             return response()->json([
-                "message" => "comment Does not exist"
+                "message" => "No such Post Found"
             ], 404);
         }
     }
