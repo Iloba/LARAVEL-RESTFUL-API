@@ -18,7 +18,7 @@ class CommentSeeder extends Seeder
     {
         //
         DB::table('comments')->insert([
-            'post_id' => 2,
+            'post_id' => 1,
             'commentor_name' => Str::random(10),
             'comment' => Str::random(30),
             'created_at' => Carbon::now(),
