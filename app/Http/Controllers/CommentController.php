@@ -66,8 +66,22 @@ class CommentController extends Controller
 
 
     //Delete Comments on a Blog Post
-    public function deleteComment(Post $post){
+    public function deleteComment(Post $post, $id){
+        if(Post::where('id', $post->id)->exists()){
+            //Find the particular comment
+         $comments = Post::find($post->id)->comment()->where('id', $id)->first();
+         
+         $comments->delete();
 
+          //Return Response
+          return response()->json([
+              "message" => "comment successfully Deleted"
+          ], 200);
+      }else{
+          return response()->json([
+              "message" => "No such Post Found"
+          ], 404);
+      }
     }
 
 }

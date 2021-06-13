@@ -51,4 +51,4 @@ Route::get('posts/{post:id}/comment', [CommentController::class, 'getComments'])
 Route::put('posts/{post:id}/comment/{id}/update', [CommentController::class, 'editComment']);
 
 //Delete Comment
-Route::delete('posts/{post:id}/comment/{comment:id}/delete', [CommentController::class, 'deleteComment']);
+Route::delete('posts/{post:id}/comment/{id}/delete', [CommentController::class, 'deleteComment']);
