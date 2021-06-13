@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-//Register routes
+//All Routes
 
 //Get all posts
 Route::get('posts', [PostController::class, 'getPosts']);
@@ -47,8 +47,8 @@ Route::post('posts/{post:id}/comment/create', [CommentController::class, 'addCom
 //Get Comment on a post
 Route::get('posts/{post:id}/comment', [CommentController::class, 'getComments']);
 
-//Edit Comment
+//Edit Comment on a Blogpost
 Route::put('posts/{post:id}/comment/{id}/update', [CommentController::class, 'editComment']);
 
-//Delete Comment
+//Delete Comment on a BlogPost
 Route::delete('posts/{post:id}/comment/{id}/delete', [CommentController::class, 'deleteComment']);
